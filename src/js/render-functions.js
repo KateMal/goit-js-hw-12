@@ -62,3 +62,13 @@ export function hideLoader() {
   const loader = document.querySelector('#loader');
   loader.classList.remove('is-visible');
 }
+
+export function showLoadMoreButton() {
+  const button = document.querySelector('.load-more-button');
+  button.classList.add('is-visible');
+}
+
+export function hideLoadMoreButton() {
+  const button = document.querySelector('.load-more-button');
+  button.classList.remove('is-visible');
+}

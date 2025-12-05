@@ -10,6 +10,7 @@ export async function getImagesByQuery(query, page = 1) {
     image_type: 'photo', // only photos
     orientation: 'horizontal', // horizontal orientation
     safesearch: true, // filter for safe content
+    per_page: 15, // 15 images per page
     page: page,
   };
 
