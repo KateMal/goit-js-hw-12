@@ -20,7 +20,7 @@ const endOfCollectionMessage =
 
 const formElement = document.querySelector('#search-form');
 const loadMoreButton = document.querySelector('.load-more-button');
-loadMoreButton.disabled = true;
+hideLoadMoreButton();
 
 // Global state
 let currentQuery = '';
@@ -43,12 +43,11 @@ formElement.addEventListener('submit', async event => {
 
   // Reset pagination for new search
   currentQuery = query;
-  loadMoreButton.disabled = false;
   currentPage = 1;
   totalHits = 0;
 
   clearGallery();
-  hideLoadMoreButton();
+  // hideLoadMoreButton();
   showLoader();
 
   try {
@@ -64,6 +63,13 @@ formElement.addEventListener('submit', async event => {
     // Show Load more button if there are more images
     if (currentPage * 15 < totalHits) {
       showLoadMoreButton();
+    } else {
+      hideLoadMoreButton();
+      iziToast.info({
+        title: 'Info',
+        message: endOfCollectionMessage,
+        position: 'topRight',
+      });
     }
   } catch (error) {
     iziToast.error({
